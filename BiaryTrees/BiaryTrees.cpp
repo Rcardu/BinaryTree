@@ -11,6 +11,7 @@ struct TreeNode{
     int val;
     TreeNode*left;
     TreeNode*right;
+    TreeNode*next;
     TreeNode(int x):val(x),left(NULL),right(NULL){};
 };
 class BiaryTree{
