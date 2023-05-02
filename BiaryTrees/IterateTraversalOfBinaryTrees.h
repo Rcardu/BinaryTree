@@ -1,4 +1,4 @@
-/*深度优先遍历，迭代法*/
+/*深度优先遍历，迭代法*/  
 #ifndef _BASESMOOTHINGALGORITHM_H_
 #define _BASESMOOTHINGALGORITHM_H_
 #include<iostream>
