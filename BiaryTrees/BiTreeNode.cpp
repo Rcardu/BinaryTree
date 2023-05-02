@@ -12,6 +12,7 @@ public:
     T val;
     BiTreeNode<T>*left;
     BiTreeNode<T>*right;
+    vector<T>children;
     BiTreeNode(T val){
         this->val=val;
         this->left=NULL;
@@ -71,12 +72,12 @@ bool BiTree<T>::insert_right(BiTreeNode<T>*node,T val){
     size++;
     return true;
 }
-/*
+/****************************************************************************
 Function:remove
 Description:删除以node为根的子树
 Input:二叉树结点node的引用
 Output:删除是否成功
-*/
+****************************************************************************/
 template<typename T>
 bool BiTree<T>::remove(BiTreeNode<T>*&node){
     if(node==NULL)return true;//已经被删除
