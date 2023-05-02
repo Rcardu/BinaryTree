@@ -5,6 +5,7 @@
 #define _BASESMOOTHINGALGORITHM_H_
 #include<iostream>
 #endif
+#include<vector>
 
 template<typename T>
 class BiTreeNode{
@@ -12,7 +13,6 @@ public:
     T val;
     BiTreeNode<T>*left;
     BiTreeNode<T>*right;
-    vector<T>children;
     BiTreeNode(T val){
         this->val=val;
         this->left=NULL;
