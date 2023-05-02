@@ -1,15 +1,12 @@
-/*
-层序遍历⼀个⼆叉树。就是从左到右⼀层⼀层的去遍历⼆叉树。这种遍历的⽅式和我们之前
-讲过的都不太⼀样。
+/*层序遍历⼀个⼆叉树。就是从左到右⼀层⼀层的去遍历⼆叉树。这种遍历的⽅式和我们之前讲过的都不太⼀样。
 需要借⽤⼀个辅助数据结构即队列来实现，队列先进先出，符合⼀层⼀层遍历的逻辑，⽽是
 ⽤栈先进后出适合模拟深度优先遍历也就是递归的逻辑。
-⽽这种层序遍历⽅式就是图论中的⼴度优先遍历，只不过我们应⽤在⼆叉树上。
-*/
+⽽这种层序遍历⽅式就是图论中的⼴度优先遍历，只不过我们应⽤在⼆叉树上。*/
 #ifndef _BASESMOOTHINGALGORITHM_H_
 #define _BASESMOOTHINGALGORITHM_H_
 #include<iostream>
-#include"BiTreeNode.cpp"
-#include"BiaryTrees.cpp"
+#include"BiTreeNode.h"
+#include"BiaryTrees.h"
 #include<vector>
 #endif
 #include<stack>
@@ -154,27 +151,4 @@ vector<int>LayerOrderTraversal::LayerOrderTraversal_max(BiTreeNode<int>*node){
         result.push_back(MaxValue);
     }
     return result;
-}
-
-//输入输出
-void LayerOrderTraversalFormat(){
-    int N;
-    cin>>N;
-    vector<int>result(N);
-    for(int i=0;i<N;i++)cin>>result[i];
-    BiTree<int>*bitree=new BiTree<int>();
-    bitree->insert_All(bitree->root,result,0,N);
-    LayerOrderTraversal obj;
-    //vector<vector<int>>val=obj.LayerOrderTraversal_acl2(bitree->root);
-    /*for(int i=0;i<val.size();i++){
-        for(int j=0;j<val[i].size();j++)
-            cout<<" "<<val[i][j];
-        cout<<endl;
-    }*/
-    //vector<int>vec=obj.LayerOrderTraversal_acl3(bitree->root);
-    //vector<double>vec=obj.LayerOrderTraversal_avg(bitree->root);
-    //for(int i=0;i<vec.size();i++)cout<<setiosflags(ios::fixed)<<setprecision(2)<<vec[i]<<endl;
-    vector<int>vec=obj.LayerOrderTraversal_max(bitree->root);
-    for(int i=0;i<vec.size();i++)cout<<vec[i];
-
 }
