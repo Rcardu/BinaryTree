@@ -1,11 +1,14 @@
 #include<iostream>
 #include"BiaryTrees\\RecursiveTraversalOfBinaryTrees.cpp"
+#include"BiaryTrees\\IterateTraversalOfBinaryTrees.cpp"
 
 
-void RecursiveTraversalOfBinaryTreesFormat();
+//void RecursiveTraversalOfBinaryTreesFormat();
+void IterateTrabersalFormat();
 
 int main(){
-       RecursiveTraversalOfBinaryTreesFormat();
+       //RecursiveTraversalOfBinaryTreesFormat();
+       IterateTrabersalFormat();
 
 
     while(getchar()!='\n')
