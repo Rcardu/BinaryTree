@@ -1,20 +1,18 @@
 #include<iostream>
-#include"BiaryTrees\\RecursiveTraversalOfBinaryTrees.cpp"
-#include"BiaryTrees\\IterateTraversalOfBinaryTrees.cpp"
-#include"BiaryTrees\\UnifiedIterativeApproach.cpp"
-#include"BiaryTrees\\LayerOrderTraversal.cpp"
+#include"BiaryTrees\\Using.cpp"
 
-
-//void RecursiveTraversalOfBinaryTreesFormat();
-//void IterateTrabersalFormat();
-//void UnifiendIterativeApproach();
+//void IputFormat();
 //void LayerOrderTraversalFormat();
+//void IterateTrabersalFormat();
+//void RecursiveTraversalOfBinaryTreesFormat();
+void UnifiendIterativeApproach();
 
 int main(){
-       //RecursiveTraversalOfBinaryTreesFormat();
-       //IterateTrabersalFormat();
-       //UnifiendIterativeApproach();
+       //IputFormat();
        //LayerOrderTraversalFormat();
+       //IterateTrabersalFormat();
+       //RecursiveTraversalOfBinaryTreesFormat();
+       UnifiendIterativeApproach();
 
 
     while(getchar()!='\n')
