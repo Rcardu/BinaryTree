@@ -41,10 +41,6 @@ vector<vector<int>>SequentialTraversalOfMultiProngedTrees(BiTreeNode<int>*node);
 /*在每个树⾏中找最⼤值需要在⼆叉树的每⼀⾏中找到最⼤的值*/
 vector<int>LayerOrderTraversal_max(BiTreeNode<int>*node);
 
-/*给定⼀个完美⼆叉树，其所有叶⼦节点都在同⼀层，每个⽗节点都有两个⼦节点。⼆叉树定义如下：
-填充它的每个 next 指针，让这个指针指向其下⼀个右侧节点。如果找不到下⼀个右侧节点，则将 next 指针设置为 NULL。
-初始状态下，所有 next 指针都被设置为 NULL。*/
-TreeNode*LayerOrderTraversal_connect(TreeNode*node);
 };
 vector<vector<int>> LayerOrderTraversal::LayerOrderTraversal_acl(BiTreeNode<int>*node){
         queue<BiTreeNode<int>*>que;
@@ -158,32 +154,6 @@ vector<int>LayerOrderTraversal::LayerOrderTraversal_max(BiTreeNode<int>*node){
         result.push_back(MaxValue);
     }
     return result;
-}
-TreeNode*LayerOrderTraversal::LayerOrderTraversal_connect(TreeNode*node){
-    queue<TreeNode*>que;
-    if(node!=NULL)que.push(node);
-    while(!que.empty()){
-        int size=que.size();
-        vector<int>vec;
-        TreeNode*nodePre;
-        TreeNode*ptr;
-        for(int i=0;i<size;i++){
-            if(i==0){
-                nodePre=que.front();
-                que.pop();
-                ptr=nodePre;
-            }else{
-                ptr=que.front();
-                que.pop();
-                nodePre->next=ptr;
-                nodePre=nodePre->next;
-            }
-            if(ptr->left)que.push(ptr->left);
-            if(ptr->right)que.push(ptr->right);
-        }
-        nodePre->next==NULL;
-    }
-    return node;
 }
 
 //输入输出
