@@ -19,7 +19,7 @@
 */
 #include<iostream>
 #include<vector>
-#include"BiaryTrees.cpp"
+#include"BiaryTrees.h"
 #include"BiTreeNode.cpp"
 void Print(TreeNode* p);
 using namespace std;

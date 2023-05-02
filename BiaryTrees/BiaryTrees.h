@@ -5,6 +5,8 @@
 #define _BASESMOOTHINGALGORITHM_H_
 #include<iostream>
 #endif
+#include<queue>
+#include<vector>
 using namespace std;
 
 struct TreeNode{
@@ -40,6 +42,35 @@ private:
             CreatTree(trees,sub*2+2,len,root->right);
         }
     }
+    /*给定⼀个完美⼆叉树，其所有叶⼦节点都在同⼀层，每个⽗节点都有两个⼦节点。⼆叉树定义如下：
+填充它的每个 next 指针，让这个指针指向其下⼀个右侧节点。如果找不到下⼀个右侧节点，则将 next 指针设置为 NULL。
+初始状态下，所有 next 指针都被设置为 NULL。*/
+    TreeNode*LayerOrderTraversal_connect(TreeNode*node){
+        queue<TreeNode*>que;
+        if(node!=NULL)que.push(node);
+        while(!que.empty()){
+            int size=que.size();
+            vector<int>vec;
+            TreeNode*nodePre;
+            TreeNode*ptr;
+            for(int i=0;i<size;i++){
+                if(i==0){
+                    nodePre=que.front();
+                    que.pop();
+                    ptr=nodePre;
+                }else{
+                    ptr=que.front();
+                    que.pop();
+                    nodePre->next=ptr;
+                    nodePre=nodePre->next;
+                }
+                if(ptr->left)que.push(ptr->left);
+                if(ptr->right)que.push(ptr->right);
+            }
+            nodePre->next==NULL;
+        }
+        return node;
+    }
 public:
     //输入函数
     void RecursiveTraversalOfBinaryTrees(){
@@ -58,6 +89,7 @@ public:
         int sub=0;
         int len=trees.size();
         CreatTree(trees,sub,len,root);
+        LayerOrderTraversal_connect(root);
         Print(root);
     }
     //输出函数
