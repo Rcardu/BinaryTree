@@ -10,13 +10,16 @@
 using namespace std;
 class TheMaximumDepthOfTheBinaryTree{
 public:
-/*递归版*/
-int TheMaximumDepthOfTheBinaryTree_Arec(BiTreeNode<int>*node);
-/*迭代版，在层序遍历的过程中记录深度*/
-int TheMaximumDepthOfTheBinaryTree_Alay(BiTreeNode<int>*node);
-
+    /*递归版*/
+    int TheMaximumDepthOfTheBinaryTree_Arec(BiTreeNode<int>*node);
+    /*迭代版，在层序遍历的过程中记录深度*/
+    int TheMaximumDepthOfTheBinaryTree_Alay(BiTreeNode<int>*node);
+    /*栈，求深度*/
+    int TheMaximumDepthOfTheBinaryTree_Asta(BiTreeNode<int>* node);
 
 };
+
+
 /*⼆叉树的深度为根节点到最远叶⼦节点的最长路径上的节点数
 1.确定递归函数参数及返回值，传入树的根结点，返回树的最长深度
 int TheMaximumDepthOfTheBinaryTree_Arec(BiTreeNode<int>*node)
@@ -49,4 +52,29 @@ int TheMaximumDepthOfTheBinaryTree::TheMaximumDepthOfTheBinaryTree_Alay(BiTreeNo
         }
     }
     return len;
+}
+//使用栈求深度
+int TheMaximumDepthOfTheBinaryTree::TheMaximumDepthOfTheBinaryTree_Asta(BiTreeNode<int>* node){
+    stack<BiTreeNode<int>*>st;
+    if(node!=NULL)st.push(node);
+    int depth=0;
+    int result=0;
+    while(!st.empty()){
+        BiTreeNode<int>*ptr=st.top();
+        if(ptr!=NULL){
+            st.pop();
+            st.push(ptr);
+            st.push(NULL);
+            depth++;
+            if(ptr->right)st.push(ptr->right);
+            if(ptr->left)st.push(ptr->left);
+        }else{
+            st.pop();
+            ptr=st.top();
+            st.pop();
+            depth--;
+        }
+        result=result>depth?result:depth;
+    }
+    return result;
 }
