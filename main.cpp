@@ -5,14 +5,16 @@
 //void LayerOrderTraversalFormat();
 //void IterateTrabersalFormat();
 //void RecursiveTraversalOfBinaryTreesFormat();
-void UnifiendIterativeApproach();
+//void UnifiendIterativeApproach();
+void FlipTheBinaryTreeFormat();
 
 int main(){
        //IputFormat();
        //LayerOrderTraversalFormat();
        //IterateTrabersalFormat();
        //RecursiveTraversalOfBinaryTreesFormat();
-       UnifiendIterativeApproach();
+       //UnifiendIterativeApproach();
+       FlipTheBinaryTreeFormat();
 
 
     while(getchar()!='\n')

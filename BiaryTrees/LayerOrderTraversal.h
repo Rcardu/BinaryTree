@@ -20,6 +20,7 @@ class LayerOrderTraversal{
 public:
 //层序遍历
 vector<vector<int>>LayerOrderTraversal_acl(BiTreeNode<int>*node);
+vector<vector<int>>LayerOrderTraversal_acl(TreeNode*node);
 
 /*给定⼀个⼆叉树，返回其节点值⾃底向上的层次遍历。 （即按从叶⼦节点所在层到根节点
 所在的层，逐层从左向右遍历）把外层数组反转即可*/
@@ -37,7 +38,6 @@ vector<vector<int>>SequentialTraversalOfMultiProngedTrees(BiTreeNode<int>*node);
 
 /*在每个树⾏中找最⼤值需要在⼆叉树的每⼀⾏中找到最⼤的值*/
 vector<int>LayerOrderTraversal_max(BiTreeNode<int>*node);
-
 };
 vector<vector<int>> LayerOrderTraversal::LayerOrderTraversal_acl(BiTreeNode<int>*node){
         queue<BiTreeNode<int>*>que;
@@ -58,6 +58,25 @@ vector<vector<int>> LayerOrderTraversal::LayerOrderTraversal_acl(BiTreeNode<int>
         }
         return result;
     }
+vector<vector<int>> LayerOrderTraversal::LayerOrderTraversal_acl(TreeNode*node){
+    queue<TreeNode*>que;
+        if(node!=NULL)que.push(node);
+        vector<vector<int>>result;
+        while(!que.empty()){
+            int size=que.size();
+            vector<int>vec;
+            //使用size，que.size()是不断变化的
+            for(int i=0;i<size;i++){
+                TreeNode* ptr=que.front();
+                que.pop();
+                vec.push_back(ptr->val);
+                if(ptr->left)que.push(ptr->left);
+                if(ptr->right)que.push(ptr->right);
+            }
+            result.push_back(vec);
+        }
+        return result;
+}
 vector<vector<int>>LayerOrderTraversal::LayerOrderTraversal_acl2(BiTreeNode<int>*node){
         queue<BiTreeNode<int>*>que;
         if(node!=NULL)que.push(node);

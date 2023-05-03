@@ -9,7 +9,16 @@
 #include"IterateTraversalOfBinaryTrees.h"
 #include"RecursiveTraversalOfBinaryTrees.h"
 #include"UnifiedIterativeApproach.h"
+#include"FlipTheBinaryTree.h"
+
 using namespace std;
+
+void IputFormat();//链接每层的结点
+void LayerOrderTraversalFormat();//广度优先遍历
+void IterateTrabersalFormat();//深度优先遍历,迭代
+void RecursiveTraversalOfBinaryTreesFormat();//深度优先遍历，递归法
+void UnifiendIterativeApproach();//深度优先遍历，统一格式递归版
+void FlipTheBinaryTreeFormat();//反转二叉树
 
 /*给定⼀个完美⼆叉树，其所有叶⼦节点都在同⼀层，每个⽗节点都有两个⼦节点。⼆叉树定义如下：
 填充它的每个 next 指针，让这个指针指向其下⼀个右侧节点。如果找不到下⼀个右侧节点，则将 next 指针设置为 NULL。
@@ -91,4 +100,25 @@ void UnifiendIterativeApproach(){
     //vector<int>val=obj.UnifiedIterativeApproach_ins(bitree->root);
     vector<int>val=obj.UnifiedIterativeApproach_post(bitree->root);
     for(int i=0;i<val.size();i++)cout<<" "<<val[i];
+}
+//反转二叉树
+void FlipTheBinaryTreeFormat(){
+    int N;
+    cin>>N;
+    vector<int>trees(N);
+    for(int i=0;i<N;i++)cin>>trees[i];
+    int sub=0;
+    int len=N;
+    TreeNode*root;
+    BiaryTree obj;
+    obj.CreatTree(trees,sub,len,root);
+    FlipTheBinaryTree tcp;//用来反转树
+    LayerOrderTraversal Fot;//用来使用层序遍历并输出
+    vector<vector<int>>vec=Fot.LayerOrderTraversal_acl(tcp.FlipTheBinaryTree_Arec(root));
+    for(int i=0;i<vec.size();i++){
+        for(int j=0;j<vec[i].size();j++){
+            cout<<vec[i][j]<<" ";
+        }
+        cout<<endl;
+    }
 }
