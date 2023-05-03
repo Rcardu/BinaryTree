@@ -9,11 +9,14 @@
 #include"SymmetricalBinaryTree.h"
 #include"TheMaximumDepthOfTheBinaryTree.h"
 #include"BiaryTress_N.h"
+#include"TheMinmumBiaryTrees.h"
 
 
 using namespace std;
 void SymmetricalBinaryTree_AtraverFormat();//镜像树的判断
 void TheMaximumDepthOfTheBinaryTree_Format();//最大深度
+void Format();//多叉树，深度
+void TheMinmumFormat();//最小深度
 
 
 //镜像树的判断
@@ -30,7 +33,7 @@ void SymmetricalBinaryTree_AtraverFormat(){
     if(val)cout<<"true";
     else cout<<"false";
 }
-//最大深度
+//最大深度,二叉树
 void TheMaximumDepthOfTheBinaryTree_Format(){
     int N;
     cin>>N;
@@ -39,9 +42,10 @@ void TheMaximumDepthOfTheBinaryTree_Format(){
     BiTree<int>* bitree=new BiTree<int>();
     bitree->insert_All(bitree->root,trees,0,N);
     TheMaximumDepthOfTheBinaryTree cat;
-    int val=cat.TheMaximumDepthOfTheBinaryTree_Alay(bitree->root);
+    int val=cat.TheMaximumDepthOfTheBinaryTree_Asta(bitree->root);
     cout<<val;
 }
+//多叉树，深度
 void Format(){
     MNode node;
     MTree tree;
@@ -57,6 +61,29 @@ void Format(){
     tree.putChild(&node6,&node4),tree.putChild(&node7,&node4);
     tree.putChild(&node8,&node5),tree.putChild(&node9,&node5);
     tree.putChild(&node6,&node10);
-
+    /*vector<vector<int>>vec=tree.SequentialTraversalOfMultiProngedTrees(&node);
+    for(int i=0;i<vec.size();i++){
+        for(int j=0;j<vec[i].size();j++){
+            cout<<vec[i][j]<<" ";
+        }
+        cout<<endl;
+    }*/
+    int val=tree.maxDepthTrevers(&node);
+    cout<<val;
+}
+//最小深度
+void TheMinmumFormat(){
+    int N;
+    cin>>N;
+    vector<int>trees(N);
+    for(int i=0;i<N;i++)cin>>trees[i];
+    TreeNode*root;
+    BiaryTree obj;
+    obj.CreatTree(trees,0,N,root);
+    //BiTree<int>*obj=new BiTree<int>();
+    //obj->insert_All(obj->root,trees,0,N);
+    TheMinmumBiaryTrees cat;
+    int val=cat.TheMinmumBiaryTrees_ATra(root);
+    cout<<val;
 }
 

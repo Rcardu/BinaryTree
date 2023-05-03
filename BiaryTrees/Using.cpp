@@ -65,7 +65,7 @@ void IterateTrabersalFormat(){
     vector<int>trees(N);
     for(int i=0;i<N;i++)cin>>trees[i];
     
-    bitree->insert_All(bitree->root,trees,0,N);
+    bitree->insert_Alls(bitree->root,trees,0,N);
     IterateTraversalOfBinaryTrees obj;
     //vector<int>result=obj.IterateTraversalOfBinaryTrees_pro(bitree->root);
     //vector<int>result=obj.IterateTraversalOfBinaryTrees_ins(bitree->root);
