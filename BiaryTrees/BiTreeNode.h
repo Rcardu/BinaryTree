@@ -33,6 +33,7 @@ public:
     bool insert_right(BiTreeNode<T>*node,T val);//插入左孩子
     bool remove(BiTreeNode<T>*&node);//删除以node为结点的树
     bool insert_All(BiTreeNode<T>*&node,vector<T>data,int n,int m);//插入函数
+    void insert_Alls(BiTreeNode<T>*&node,vector<T>data,int sub,int len);
 };
 /**************************************************************************
 Function:insert_left
@@ -105,4 +106,18 @@ bool BiTree<T>::insert_All(BiTreeNode<T>*&node,vector<T>data,int n,int m){
     insert_All(node->right,data,n*2+2,m);
 
     return true;
+}
+/*1.递归参数及返回值，传入结点与树要求的数组和数组标记即可返回类型为空
+2.确定递归终止条件：当最后一个数被放入树中时停止
+if(m==n)return ;
+3.确定单层递归逻辑：
+    ~当给的数组值为特殊代表空结点时，将次结点设置为空结点
+    ~当给的数组值不为空结点时，将产生一个结点，并将数组值放入*/
+template<typename T>
+void BiTree<T>::insert_Alls(BiTreeNode<T>*&node,vector<T>data,int sub,int len){
+    if(sub>=len)return ;
+    if(data[sub]==-1)node=NULL;
+    else node=new BiTreeNode<T>(data[sub]);
+    insert_Alls(node->left,data,sub*2+1,len);
+    insert_Alls(node->right,data,sub*2+2,len);
 }
