@@ -33,9 +33,6 @@ vector<int>LayerOrderTraversal_acl3(BiTreeNode<int>*node);
 /*给定⼀个⾮空⼆叉树, 返回⼀个由每层节点平均值组成的数组。对每一层求平均值*/
 vector<double>LayerOrderTraversal_avg(BiTreeNode<int>*node);
 
-/*N叉树 :
-vector<vector<int>>SequentialTraversalOfMultiProngedTrees(BiTreeNode<int>*node);*/
-
 /*在每个树⾏中找最⼤值需要在⼆叉树的每⼀⾏中找到最⼤的值*/
 vector<int>LayerOrderTraversal_max(BiTreeNode<int>*node);
 };
@@ -132,27 +129,6 @@ vector<double>LayerOrderTraversal::LayerOrderTraversal_avg(BiTreeNode<int>*node)
         }
         return result;
     }
-/*
-vector<vector<int>>SequentialTraversalOfMultiProngedTrees(BiTreeNode<int>*node){
-    queue<BiTreeNode<int>*>que;
-    if(node!=NULL)que.push(node);
-    vector<vector<int>>result;
-    while(!que.empty()){
-        int size=que.size();
-        vector<int>vec;
-        for(int i=0;i<size;i++){
-            BiTreeNode<int>*ptr=que.front();
-            que.pop();
-            vec.push_back(ptr->val);
-            for(int i=0;i<node->children.size();i++){
-                if(ptr->children[i]!=NULL)que.push(ptr->children[i]);
-            }
-        }
-        result.push_back(vec);
-    }
-return result;
-}
-*/
 vector<int>LayerOrderTraversal::LayerOrderTraversal_max(BiTreeNode<int>*node){
     queue<BiTreeNode<int>*>que;
     vector<int>result;
