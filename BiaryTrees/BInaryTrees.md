@@ -38,4 +38,5 @@ struct TreeNode{
     TreeNode*right;
     TreeNode(int x):val(x),left(NULL),right(NULL){};
 }
-
+morris遍历是⼆叉树遍历算法的超强进阶算法，morris遍历可以将⾮递归遍历中的空间复杂
+度降为O(1)
