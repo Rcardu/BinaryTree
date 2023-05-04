@@ -12,7 +12,8 @@
 //void TheMaximumDepthOfTheBinaryTree_Format();
 //void Format();
 //void TheMinmumFormat();
-void NumberOfNodesFormat();
+//void NumberOfNodesFormat();
+void AllPathForamt();
 
 int main(){
        //IputFormat();
@@ -25,7 +26,8 @@ int main(){
        //TheMaximumDepthOfTheBinaryTree_Format();
        //Format();
        //TheMinmumFormat();
-       NumberOfNodesFormat();
+       //NumberOfNodesFormat();
+       AllPathForamt();
 
 
     while(getchar()!='\n')

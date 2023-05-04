@@ -5,12 +5,14 @@
 #include"BiaryTrees.h"
 #include"BiTreeNode.h"
 #include"LayerOrderTraversal.h"
+#include<string>
 #endif
 #include"SymmetricalBinaryTree.h"
 #include"TheMaximumDepthOfTheBinaryTree.h"
 #include"BiaryTress_N.h"
 #include"TheMinmumBiaryTrees.h"
 #include"NumberOfNodes.h"
+#include"AllPaths.h"
 
 
 using namespace std;
@@ -19,6 +21,7 @@ void TheMaximumDepthOfTheBinaryTree_Format();//最大深度
 void Format();//多叉树，深度
 void TheMinmumFormat();//最小深度
 void NumberOfNodesFormat();//结点个数
+void AllPathForamt();//二叉树的所有路径
 
 
 //镜像树的判断
@@ -102,4 +105,17 @@ void NumberOfNodesFormat(){
     //int val=cat.NumberOfNodes_maxDepth(root);//节点深度
     int val=cat.Bbance_feel(root);//平衡二叉树的判断
     cout<<val;
+}
+//二叉树的所有路径
+void AllPathForamt(){
+    int N;
+    cin>>N;
+    vector<int>trees(N);
+    for(int i=0;i<N;i++)cin>>trees[i];
+    TreeNode*root;
+    BiaryTree obj;
+    obj.CreatTree(trees,0,N,root);
+    AllPaths cat;
+    vector<string>val=cat.AllPaths_Astc(root);
+    for(int i=0;i<val.size();i++)cout<<val[i]<<endl;
 }
