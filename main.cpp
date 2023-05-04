@@ -1,6 +1,7 @@
 #include<iostream>
 #include"BiaryTrees\\Using.cpp"
 #include"BiaryTrees\\Using2.cpp"
+#include"BiaryTrees\\Using3.cpp"
 
 //void IputFormat();
 //void LayerOrderTraversalFormat();
@@ -13,7 +14,9 @@
 //void Format();
 //void TheMinmumFormat();
 //void NumberOfNodesFormat();
-void AllPathForamt();
+//void AllPathForamt();
+//void SumOfTheLeftLeavesFormat();
+void SumOfThePathsFormat();
 
 int main(){
        //IputFormat();
@@ -27,7 +30,9 @@ int main(){
        //Format();
        //TheMinmumFormat();
        //NumberOfNodesFormat();
-       AllPathForamt();
+       //AllPathForamt();
+       //SumOfTheLeftLeavesFormat();
+       SumOfThePathsFormat();
 
 
     while(getchar()!='\n')
