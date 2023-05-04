@@ -53,7 +53,7 @@ int TheMaximumDepthOfTheBinaryTree::TheMaximumDepthOfTheBinaryTree_Alay(BiTreeNo
     }
     return len;
 }
-//使用栈求深度
+//使用栈求二叉树的最大深度
 int TheMaximumDepthOfTheBinaryTree::TheMaximumDepthOfTheBinaryTree_Asta(BiTreeNode<int>* node){
     stack<BiTreeNode<int>*>st;
     if(node!=NULL)st.push(node);

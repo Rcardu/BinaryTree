@@ -10,6 +10,7 @@
 #include"TheMaximumDepthOfTheBinaryTree.h"
 #include"BiaryTress_N.h"
 #include"TheMinmumBiaryTrees.h"
+#include"NumberOfNodes.h"
 
 
 using namespace std;
@@ -17,6 +18,7 @@ void SymmetricalBinaryTree_AtraverFormat();//镜像树的判断
 void TheMaximumDepthOfTheBinaryTree_Format();//最大深度
 void Format();//多叉树，深度
 void TheMinmumFormat();//最小深度
+void NumberOfNodesFormat();//结点个数
 
 
 //镜像树的判断
@@ -86,4 +88,18 @@ void TheMinmumFormat(){
     int val=cat.TheMinmumBiaryTrees_ATra(root);
     cout<<val;
 }
-
+//结点个数,节点深度，平衡二叉树
+void NumberOfNodesFormat(){
+    int N;
+    cin>>N;
+    vector<int>trees(N);
+    for(int i=0;i<N;i++)cin>>trees[i];
+    TreeNode*root;
+    BiaryTree obj;
+    obj.CreatTree(trees,0,N,root);
+    NumberOfNodes cat;
+    //int val=cat.NumberOfNodes_Acom(root);//节点个数
+    //int val=cat.NumberOfNodes_maxDepth(root);//节点深度
+    int val=cat.Bbance_feel(root);//平衡二叉树的判断
+    cout<<val;
+}

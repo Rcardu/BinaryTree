@@ -4,7 +4,7 @@
 
 //void IputFormat();
 //void LayerOrderTraversalFormat();
-void IterateTrabersalFormat();
+//void IterateTrabersalFormat();
 //void RecursiveTraversalOfBinaryTreesFormat();
 //void UnifiendIterativeApproach();
 //void FlipTheBinaryTreeFormat();
@@ -12,11 +12,12 @@ void IterateTrabersalFormat();
 //void TheMaximumDepthOfTheBinaryTree_Format();
 //void Format();
 //void TheMinmumFormat();
+void NumberOfNodesFormat();
 
 int main(){
        //IputFormat();
        //LayerOrderTraversalFormat();
-       IterateTrabersalFormat();
+       //IterateTrabersalFormat();
        //RecursiveTraversalOfBinaryTreesFormat();
        //UnifiendIterativeApproach();
        //FlipTheBinaryTreeFormat();
@@ -24,6 +25,7 @@ int main(){
        //TheMaximumDepthOfTheBinaryTree_Format();
        //Format();
        //TheMinmumFormat();
+       NumberOfNodesFormat();
 
 
     while(getchar()!='\n')
