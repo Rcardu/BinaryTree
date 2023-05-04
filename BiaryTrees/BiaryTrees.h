@@ -23,7 +23,7 @@ class BiaryTree{
 public:
     //输入函数，动态数组
     void CreatTree(int *trees,int sub,int len,TreeNode* &root);
-    //输入函数，容器数组vector
+    //输入函数，容器vector,当前位置，数组长度，根节点
     void CreatTree(vector<int>trees,int sub,int len,TreeNode* &root);
     
     /*给定⼀个完美⼆叉树，其所有叶⼦节点都在同⼀层，每个⽗节点都有两个⼦节点。⼆叉树定义如下：
