@@ -13,7 +13,7 @@
 
 using namespace std;
 
-void IputFormat();//链接每层的结点
+void IputFormat();//链接每层的结点 
 void LayerOrderTraversalFormat();//广度优先遍历
 void IterateTrabersalFormat();//深度优先遍历,迭代
 void RecursiveTraversalOfBinaryTreesFormat();//深度优先遍历，递归法
