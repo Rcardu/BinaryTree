@@ -16,7 +16,8 @@
 //void NumberOfNodesFormat();
 //void AllPathForamt();
 //void SumOfTheLeftLeavesFormat();
-void SumOfThePathsFormat();
+//void SumOfThePathsFormat();
+void COnstructBinaryFormat();
 
 int main(){
        //IputFormat();
@@ -32,7 +33,8 @@ int main(){
        //NumberOfNodesFormat();
        //AllPathForamt();
        //SumOfTheLeftLeavesFormat();
-       SumOfThePathsFormat();
+       //SumOfThePathsFormat();
+       COnstructBinaryFormat();
 
 
     while(getchar()!='\n')
