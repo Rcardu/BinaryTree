@@ -22,6 +22,10 @@ public:
     TreeNode*Construct_GreadPro(vector<int>&nums);
     /*使用表索引*/
     TreeNode*Construct_GreadProB(vector<int>&nums,int left,int right);
+    /*通过中序遍历和后序遍历得到先序遍历*/
+    void Construct_Creatpro(vector<int>&ionder,vector<int>&postorder, vector<int>&proder);
+    /*使用表索引*/
+    void Construct_CreatproB(vector<int>&ionder,int ionderBegin,int ionderEnd,vector<int>&postorder,int postorderBegin,int postorderEnd, vector<int>&proder);
 
 };  
 /*第一步：如果数组大小为0，说明是空数组
@@ -216,4 +220,77 @@ TreeNode* ConstructBinaryTree::Construct_GreadProB(vector<int>&nums,int left,int
     node->right=Construct_GreadProB(nums,MaxValueIndex+1,right);
     return node;
 
+}
+/*通过中序遍历和后序遍历得到先序遍历
+确定递归函数参数及返回值，传入中序后序数组，以及先序数组，返回空
+void Construct_Creatpro(vector<int>&ionder,vector<int>&postorder,int vector<int>&proder)
+确定递归终止条件：当后序数组大小为0时返回
+if(posteorder.size()==NULL)return nums;
+确定单层递归逻辑：使用后序数组分割中序数组，将分割出来的值放入先序数组中
+再分割后序数组，将分割的中序与后序数组进行递归将返回值给left数组，与right数组，最后合并两个数组
+int proValue=postorder[postorder.size()-1];
+proder.push_back(proValue);
+int delimiterIndex;
+for(delimiterIndex=0;delimiterIndex<ionder.size();delimiterIndex++){
+    if(ionder[delimiterIndex]==proValue)break;
+}
+vector<int>leftionder(ionder.begin(),ionder.begin()+delimiterIndex);
+vector<int>rightionder(ioner.begin()+delimiterIndex+1,ionder.end());
+postorder.resize(posterorder.size()-1);
+vector<int>leftposterder(posterder.begin(),postorder.begin()+leftionder.size());
+vector<int>rightpostorder(posterder.begin()+rightionder.size(),postorder.end());
+
+Construct_Creatpro(leftionder,leftpostorder);
+Cinstruct_Creatpro(rightionder,rightpostorder);
+*/
+void ConstructBinaryTree::Construct_Creatpro(vector<int>&ionder,vector<int>&postorder,vector<int>&proder){
+    if(postorder.size()==0)return;
+    int proValue=postorder[postorder.size()-1];
+    proder.push_back(proValue);
+    
+    int delimiterIndex;
+    for(delimiterIndex=0;delimiterIndex<ionder.size();delimiterIndex++){
+        if(ionder[delimiterIndex]==proValue)break;
+    }
+    vector<int>leftionder(ionder.begin(),ionder.begin()+delimiterIndex);
+    vector<int>rightionder(ionder.begin()+delimiterIndex+1,ionder.end());
+    postorder.resize(postorder.size()-1);
+    vector<int>leftpostorder(postorder.begin(),postorder.begin()+leftionder.size());
+    vector<int>rightpostorder(postorder.begin()+rightionder.size(),postorder.end());
+    cout<<"---------->";
+    for(int i=0;i<proder.size();i++){
+        cout<<proder[i]<<" ";
+    }
+    cout<<endl;
+    Construct_Creatpro(leftionder,leftpostorder,proder);
+    Construct_Creatpro(rightionder,rightpostorder,proder);
+}
+/*使用表索引*/
+void ConstructBinaryTree::Construct_CreatproB(vector<int>&ionder,int ionderBegin,int ionderEnd,vector<int>&postorder,int postorderBegin,int postorderEnd, vector<int>&proder){
+    if(postorderBegin==postorderEnd)return ;
+    int proValue=postorder[postorderEnd-1];
+    proder.push_back(proValue);
+    if(postorderEnd-postorderBegin==1)return ;
+    int delimiterIndex;
+    for(delimiterIndex=postorderBegin;delimiterIndex<ionderEnd;delimiterIndex++){
+        if(ionder[delimiterIndex]==proValue)break;
+    }
+    //中序数组
+    int leftionderBegin=ionderBegin;
+    int leftionderEnd=ionderBegin+delimiterIndex;
+    int rightionderbegin=ionderBegin+delimiterIndex+1;
+    int rightionderEnd=ionderEnd;
+    //后序数组
+    int leftpostorderBegin=postorderBegin;
+    int leftpostorderEnd=postorderBegin+delimiterIndex-ionderBegin;
+    int rightpostorderBegin=postorderBegin+delimiterIndex-ionderBegin;
+    int rightpostorderEnd=postorderEnd-1;
+
+    cout<<"------>";
+    for(int i=0;i<proder.size();i++){
+        cout<<proder[i]<<" ";
+    }
+    cout<<endl;
+    Construct_CreatproB(ionder,leftionderBegin,leftionderEnd,postorder,leftpostorderBegin,leftpostorderEnd,proder);
+    Construct_CreatproB(ionder,rightionderbegin,rightionderEnd,postorder,rightpostorderBegin,rightpostorderEnd,proder);
 }
