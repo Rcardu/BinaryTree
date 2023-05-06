@@ -13,10 +13,17 @@ private:
     /* data */
 public:
     /*根据⼀棵树的中序遍历与后序遍历构造⼆叉树。*/
-    TreeNode* Construct_A(vector<int>&ionder,vector<int>&postorder);
+    TreeNode* Construct_ACreat(vector<int>&ionder,vector<int>&postorder);
     /*优化版，使用表索引，中序遍历，中序分割起点，中序分割终点，后序遍历，后序分割起点，后序分割终点*/
     TreeNode* Construct_B(vector<int>&ionder,int ionderbegin,int ionderend,vector<int>&postorder,int postorderbegin,int postorderend);
-};
+    /*先序与中序构造二叉树*/
+    TreeNode* Construct_Apro(vector<int>&porder,int porderbegin,int porderderend,vector<int>&ionder,int ionderbegin,int ionderend);
+    /*构造一棵最大的二叉树*/
+    TreeNode*Construct_GreadPro(vector<int>&nums);
+    /*使用表索引*/
+    TreeNode*Construct_GreadProB(vector<int>&nums,int left,int right);
+
+};  
 /*第一步：如果数组大小为0，说明是空数组
 第二步：如果不为0，那么取后序遍历的最后一个元素作为节点元素
 第三步：找到后序数组的最后一个元素在中序数组中的位置，作为切割点
@@ -24,7 +31,7 @@ public:
 第五步：切割后序数组，切成后序左数组和后序右数组
 第六步：递归处理左区间和右区间
 */
-TreeNode* ConstructBinaryTree::Construct_A(vector<int>&ionder,vector<int>&postorder){
+TreeNode* ConstructBinaryTree::Construct_ACreat(vector<int>&ionder,vector<int>&postorder){
     //第一步：如果数组大小为0，说明是空数组
     if(postorder.size()==0)return NULL;
     //第二步：如果不为0，那么取后序遍历的最后一个元素作为节点元素
@@ -49,8 +56,8 @@ TreeNode* ConstructBinaryTree::Construct_A(vector<int>&ionder,vector<int>&postor
     //[leftIonder.size,end());
     vector<int>rightPostorder(postorder.begin()+rightIonder.size(),postorder.end());
     //第六步：递归处理左区间和右区间
-    root->left=Construct_A(leftIonder,leftPostorder);
-    root->right=Construct_A(rightIonder,rightPostorder);
+    root->left=Construct_ACreat(leftIonder,leftPostorder);
+    root->right=Construct_ACreat(rightIonder,rightPostorder);
     return root;
 }
 TreeNode* ConstructBinaryTree::Construct_B(vector<int>&ionder,int ionderbegin,int ionderend,vector<int>&postorder,int postorderbegin,int postorderend){
@@ -106,4 +113,107 @@ TreeNode* ConstructBinaryTree::Construct_B(vector<int>&ionder,int ionderbegin,in
     root->left=Construct_B(ionder,leftIonderbegin,leftIonderend,postorder,leftpostorderbegin,leftpostorderend);
     root->right=Construct_B(ionder,rightIonderbegin,rightIonderend,postorder,rightpostorderbegin,rightpostorderend);
     return root;
+}
+/*先序与中序构造二叉树*/
+TreeNode*ConstructBinaryTree::Construct_Apro(vector<int>&porder,int porderbegin,int porderderend,vector<int>&ionder,int ionderbegin,int ionderend){
+    //第一步：如果数组大小为0，说明是空数组
+    if(porderbegin==porderderend)return NULL;
+    //第二步：如果不为0，那么取先序遍历的第一个元素作为节点元素
+    int rootValue=porder[porderbegin];
+    TreeNode*root=new TreeNode(rootValue);
+    //第三步：找到先序数组的第一个元素在中序数组中的位置，作为切割点
+        //如果区间相差为1，则到了本节点的最后一个元素，不需要再分割，直接返回
+    if(porderderend-porderbegin==1)return root;
+    int delimiterIndex;
+    for(delimiterIndex=ionderbegin;delimiterIndex<porderderend;delimiterIndex++){
+        if(ionder[delimiterIndex]==rootValue)break;
+    }
+    //第四步：切割中序数组，切成中序左数组和中序右数组（一定是先切中序）
+    int leftionderBegin=ionderbegin;
+    int leftionderEnd=delimiterIndex;
+    int rightionderBegin=delimiterIndex+1;
+    int rightionderEnd=ionderend;
+    //第五步：切割后序数组，切成后先序左数组和先序右数组
+    int leftporderBegin=porderbegin+1;
+    int leftporderEnd=porderbegin+1+delimiterIndex-ionderbegin;//起始位置porderbegin+1,中序区间大小delimiterIndex-ionderbegin
+    int rightporderBegin=porderbegin+1+delimiterIndex-ionderbegin;
+    int rightporderEnd=porderderend;
+    //第六步：递归处理左区间和右区间
+    root->left=Construct_Apro(porder,leftporderBegin,leftporderEnd,ionder,leftionderBegin,leftionderEnd);
+    root->right=Construct_Apro(porder,rightporderBegin,rightporderEnd,ionder,rightionderBegin,rightionderEnd);
+    return root;
+}
+/*给定⼀个不含重复元素的整数数组。⼀个以此数组构建的最⼤⼆叉树定义如下：
+通过给定的数组构建最⼤⼆叉树，并且输出这个树的根节点。
+最⼤⼆叉树的构建过程如下：
+⼆叉树的根是数组中的最⼤元素。
+左⼦树是通过数组中最⼤值左边部分构造出的最⼤⼆叉树。
+右⼦树是通过数组中最⼤值右边部分构造出的最⼤⼆叉树。
+一般采用先序遍历因为要先创建中间节点
+1.确定地推函数参数及返回值：传入存放元素的数组，返回该构造二叉树的头结点
+TreeNode*Construct_GreadPro(vector<int>&nums);
+2.确定递归终止条件：当递归遍历的时候传入的数组大小为1是说明遇到了叶子节点，构造一个节点，判断是否为1,输入数组值，返回该结点
+TreeNode*node=new TreeNode(0);
+if(nums.size()==1){
+    node->val=nums[0];
+    return node;
+}
+确定单层递归逻辑：找到数组中最大的值和对应下标，最大值用来构造结点，下标用来分割数组
+int MaxValue=0;
+int MaxValueIndex=0;
+for(int i=0;i<nums.size();i++){
+    if(nums[i]>MaxValue){
+        MaxValue=nums[i];
+        MaxValueIndex=i;
+    }
+}
+TreeNode*node=new TreeNode(0);
+node->val=MaxValue;
+最大值下标的左区间构造左子树,需要判断MaxValueIndex>0,也就是左区间至少要有一个数
+if(MaxValue>0){
+    vector<int>newVec(nums.begin(),nums.begin()+MaxValueIndex);
+    node->left=Construct_GroadPro(newVec);
+}
+最大值下标右区间构造右子树，需要判断MaxValueIndex<(nums.size()-1)，右区间至少要有一个值
+if(MaxValue<nums.size()-1){
+    vector<int>newVec(nums.begin()+MaxValueIndex+1,nums.end());
+    node->right=Construct_GreadPro(newVec);
+}
+*/
+TreeNode* ConstructBinaryTree::Construct_GreadPro(vector<int>&nums){
+    TreeNode*node=new TreeNode(0);
+    if(nums.size()==1){
+        node->val=nums[0];
+        return node;
+    }
+    int MaxValue=0;
+    int MaxValueIndex=0;
+    for(int i=0;i<nums.size();i++){
+        if(nums[i]>MaxValue){
+            MaxValue=nums[i];
+            MaxValueIndex=i;        }
+    }
+    node->val=MaxValue;
+    if(MaxValueIndex>0){
+        vector<int>newVec(nums.begin(),nums.begin()+MaxValueIndex);
+        node->left=Construct_GreadPro(newVec);
+    }
+    if(MaxValueIndex<nums.size()-1){
+        vector<int>newVec(nums.begin()+MaxValueIndex+1,nums.end());
+        node->right=Construct_GreadPro(newVec);
+    }
+    return node;
+}
+/*表索引*/
+TreeNode* ConstructBinaryTree::Construct_GreadProB(vector<int>&nums,int left,int right){
+    if(left>=right)return nullptr;
+    int MaxValueIndex=left;
+    for(int i=left;i<right;i++){
+        if(nums[i]>nums[MaxValueIndex])MaxValueIndex=i;
+    }
+    TreeNode*node=new TreeNode(nums[MaxValueIndex]);
+    node->left=Construct_GreadProB(nums,left,MaxValueIndex);
+    node->right=Construct_GreadProB(nums,MaxValueIndex+1,right);
+    return node;
+
 }
