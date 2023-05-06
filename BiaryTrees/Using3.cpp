@@ -48,11 +48,11 @@ void SumOfThePathsFormat(){
 void COnstructBinaryFormat(){
     int N;
     cin>>N;
-    vector<int>ionder(N);//,posterder(N);
+    vector<int>ionder(N),posterder(N);
     for(int i=0;i<N;i++)cin>>ionder[i];
-    //for(int i=0;i<N;i++)cin>>posterder[i];
+    for(int i=0;i<N;i++)cin>>posterder[i];
     ConstructBinaryTree obj;
-    LayerOrderTraversal cat;
+    //LayerOrderTraversal cat;
     //vector<vector<int>>vec=cat.LayerOrderTraversal_acl(obj.Construct_A(ionder,posterder));
     //vector<vector<int>>vec=cat.LayerOrderTraversal_acl(obj.Construct_Apro(ionder,0,N,posterder,0,N));
     /*for(int i=0;i<vec.size();i++){
@@ -60,13 +60,10 @@ void COnstructBinaryFormat(){
             cout<<vec[i][j]<<" ";
         }
         cout<<endl;
-    }*/
-    vector<vector<int>>vec=cat.LayerOrderTraversal_acl(obj.Construct_GreadProB(ionder,0,N));
-    for(int i=0;i<vec.size();i++){
-        for(int j=0;j<vec[i].size();j++){
-            cout<<vec[i][j]<<" ";
-        }
-        cout<<endl;
     }
-
+      */
+     vector<int>proder;
+     obj.Construct_CreatproB(ionder,0,N,posterder,0,N,proder);
+     for(int i=0;i<proder.size();i++)cout<<proder[i]<<" ";
 }
+    
