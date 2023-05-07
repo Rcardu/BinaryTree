@@ -19,7 +19,11 @@
 //void SumOfTheLeftLeavesFormat();
 //void SumOfThePathsFormat();
 //void COnstructBinaryFormat();
-void MergeTowBinaryTreesformat();
+//void MergeTowBinaryTreesformat();
+//void searchBST_Foramt();
+//void searchBTS_ifFormat();
+//void SearchTree_minValFormat();
+void MapSearchTree_Format();
 
 int main(){
        //IputFormat();
@@ -37,7 +41,11 @@ int main(){
        //SumOfTheLeftLeavesFormat();
        //SumOfThePathsFormat();
        //COnstructBinaryFormat();
-       MergeTowBinaryTreesformat();
+       //MergeTowBinaryTreesformat();
+       //searchBST_Foramt();
+       //searchBTS_ifFormat();
+       //SearchTree_minValFormat();
+       MapSearchTree_Format();
 
 
     while(getchar()!='\n')

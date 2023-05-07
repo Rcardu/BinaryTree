@@ -9,8 +9,14 @@
 #include<string>
 #endif
 #include"MergeTwoBinaryTrees.h"
+#include"BinarySearchTree.h"
+#include"MapSearchTree.h"
 
 void MergeTowBinaryTreesformat();//合并两个树
+void searchBST_Foramt();//搜索二叉搜索树中的值
+void searchBTS_ifFormat();//判读是否为二叉搜索树
+void SearchTree_minValFormat();//二叉搜索树的最小差值
+void MapSearchTree_Format();//二叉树中的众数
 
 
 //合并两个树
@@ -32,7 +38,61 @@ void MergeTowBinaryTreesformat(){
             cout<<vec[i][j]<<" ";
         }
         cout<<endl;
-    }
-        
-        
+    }  
+}//搜索二叉搜索树中的值
+void searchBST_Foramt(){
+    int N;
+    cin>>N;
+    vector<int>ionder(N),postorder(N);
+    for(int i=0;i<N;i++)cin>>ionder[i];
+    for(int i=0;i<N;i++)cin>>postorder[i];
+    ConstructBinaryTree cat;
+    MergeTwoBinaryTrees obj;
+    LayerOrderTraversal edu;
+    vector<vector<int>>vec=edu.LayerOrderTraversal_acl(obj.searchBST_AIter(cat.Construct_B(ionder,0,N,postorder,0,N),2));
+    for(int i=0;i<vec.size();i++){
+        for(int j=0;j<vec[i].size();j++){
+            cout<<vec[i][j]<<" ";
+        }
+        cout<<endl;
+    }  
+}
+//判读是否为二叉搜索树
+void searchBTS_ifFormat(){
+    int N;
+    cin>>N;
+    vector<int>ionder(N),postorder(N);
+    for(int i=0;i<N;i++)cin>>ionder[i];
+    for(int i=0;i<N;i++)cin>>postorder[i];
+    ConstructBinaryTree cat;
+    MergeTwoBinaryTrees obj;
+    //obj.searchBST_if(cat.Construct_B(ionder,0,N,postorder,0,N));
+    //cout<<obj.if_feel();
+    cout<<obj.isValildBTS_Iter(cat.Construct_B(ionder,0,N,postorder,0,N));
+}
+//二叉搜索树的最小差值
+void SearchTree_minValFormat(){
+    int N;
+    cin>>N;
+    vector<int>ionder(N),postorder(N);
+    for(int i=0;i<N;i++)cin>>ionder[i];
+    for(int i=0;i<N;i++)cin>>postorder[i];
+    ConstructBinaryTree cat;
+    BinarySearchTree obj;
+    //obj.SearchTree_ionderRec(cat.Construct_B(ionder,0,N,postorder,0,N));
+    //cout<<obj.reval;
+    cout<<obj.SearchTree_ionderIter(cat.Construct_B(ionder,0,N,postorder,0,N));
+}
+/*二叉树中的众数*/
+void MapSearchTree_Format(){
+    int N;
+    cin>>N;
+    vector<int>ionder(N);
+    for(int i=0;i<N;i++)cin>>ionder[i];
+    TreeNode*root;
+    BiaryTree car;
+    MapSearchTree obj;
+    car.CreatTree(ionder,0,N,root);
+    vector<int>result=obj.findMode(root);
+    for(int i=0;i<result.size();i++)cout<<result[i];
 }
