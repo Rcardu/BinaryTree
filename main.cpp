@@ -23,7 +23,9 @@
 //void searchBST_Foramt();
 //void searchBTS_ifFormat();
 //void SearchTree_minValFormat();
-void MapSearchTree_Format();
+//void MapSearchTree_Format();
+//void SearchTree_format();
+void RecentPublicAncestors_Format();
 
 int main(){
        //IputFormat();
@@ -45,7 +47,9 @@ int main(){
        //searchBST_Foramt();
        //searchBTS_ifFormat();
        //SearchTree_minValFormat();
-       MapSearchTree_Format();
+       //MapSearchTree_Format();
+       //SearchTree_format();
+       RecentPublicAncestors_Format();
 
 
     while(getchar()!='\n')

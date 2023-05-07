@@ -11,12 +11,16 @@
 #include"MergeTwoBinaryTrees.h"
 #include"BinarySearchTree.h"
 #include"MapSearchTree.h"
+#include"SearchTree.h"
+#include"RecentPublicAncestors.h"
 
 void MergeTowBinaryTreesformat();//合并两个树
 void searchBST_Foramt();//搜索二叉搜索树中的值
 void searchBTS_ifFormat();//判读是否为二叉搜索树
 void SearchTree_minValFormat();//二叉搜索树的最小差值
 void MapSearchTree_Format();//二叉树中的众数
+void SearchTree_format();//二叉搜索树中的众数
+void RecentPublicAncestors_Format();//二叉树的最近公共祖先
 
 
 //合并两个树
@@ -95,4 +99,31 @@ void MapSearchTree_Format(){
     car.CreatTree(ionder,0,N,root);
     vector<int>result=obj.findMode(root);
     for(int i=0;i<result.size();i++)cout<<result[i];
+}
+
+void SearchTree_format(){
+    int N;
+    cin>>N;
+    vector<int>ionder(N);
+    for(int i=0;i<N;i++)cin>>ionder[i];
+    TreeNode*root;
+    BiaryTree car;
+    SearchTree obj;
+    car.CreatTree(ionder,0,N,root);
+    vector<int>result=obj.SearchTree_AIter(root);
+    for(int i=0;i<result.size();i++)cout<<result[i];
+}
+
+void RecentPublicAncestors_Format(){
+    int N;
+    cin>>N;
+    vector<int>ionder(N),postorder(N);
+    for(int i=0;i<N;i++)cin>>ionder[i];
+    for(int i=0;i<N;i++)cin>>postorder[i];
+    ConstructBinaryTree cat;
+    RecentPublicAncestors obj;
+    TreeNode*root,*p,*q;
+    root=cat.Construct_B(ionder,0,N,postorder,0,N);
+    cout<<obj.lowsetCommonAncestor(root,obj.Search_RootA(root,6),obj.Search_RootA(root,7))->val;
+    
 }
