@@ -16,6 +16,8 @@ private:
 public:
     /*给定⼀个⼆叉树, 找到该树中两个指定节点的最近公共祖先。*/
     TreeNode*lowsetCommonAncestor(TreeNode*root,TreeNode*p,TreeNode*q);
+    /*给定⼀个⼆叉树, 找到该树中两个指定节点的最近公共祖先。给的是节点的数值*/
+    TreeNode*lowsetCommonAncestorS(TreeNode*root,int p,int q);
     /*按值找到需要的节点*/
     TreeNode*Search_RootA(TreeNode*node,int val){
         if(node==NULL)return NULL;
@@ -47,6 +49,18 @@ TreeNode*RecentPublicAncestors::lowsetCommonAncestor(TreeNode*root,TreeNode*p,Tr
     if(root==q||root==p||root==NULL)return root;
     TreeNode*left=lowsetCommonAncestor(root->left,p,q);
     TreeNode*right=lowsetCommonAncestor(root->right,p,q);
+    if(left!=NULL&&right!=NULL)return root;
+
+    if(left!=NULL&&right==NULL)return left;
+    else if(left==NULL&&right!=NULL)return right;
+    else{
+        return NULL;
+    }
+}
+TreeNode*RecentPublicAncestors::lowsetCommonAncestorS(TreeNode*root,int p,int q){
+    if(root==NULL||root->val==q||root->val==p)return root;
+    TreeNode*left=lowsetCommonAncestorS(root->left,p,q);
+    TreeNode*right=lowsetCommonAncestorS(root->right,p,q);
     if(left!=NULL&&right!=NULL)return root;
 
     if(left!=NULL&&right==NULL)return left;
