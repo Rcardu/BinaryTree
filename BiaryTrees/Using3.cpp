@@ -16,7 +16,7 @@ void SumOfTheLeftLeavesFormat();//左叶子之和，最左边叶子的值
 void SumOfThePathsFormat();//路径总和
 void COnstructBinaryFormat();//构造二叉树,中后序，前中序，最大值构造
 
-void SumOfTheLeftLeavesFormat(){
+void SumOfTheLeftLeavesFormat(){ 
     int N;
     cin>>N;
     vector<int>trees(N);
