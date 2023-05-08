@@ -29,7 +29,7 @@
 //void RecentPublicAncestors_Format();
 //void CommonAncestorSearchTreeFormat();
 //void CommonAncestorSearchTree_InsertFormat();
-void CommonAncestorSearchTree_DelteFormat();
+//void CommonAncestorSearchTree_DelteFormat();
 
 int main(){
        //IputFormat();
@@ -56,7 +56,9 @@ int main(){
        //RecentPublicAncestors_Format();
        //CommonAncestorSearchTreeFormat();
        //CommonAncestorSearchTree_InsertFormat();
-       CommonAncestorSearchTree_DelteFormat();
+       //CommonAncestorSearchTree_DelteFormat();
+       //TrimBinaryTreeFormat();
+       CreatSearchTreeFormat();
 
 
     while(getchar()!='\n')
