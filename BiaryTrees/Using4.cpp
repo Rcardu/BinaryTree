@@ -100,7 +100,7 @@ void MapSearchTree_Format(){
     vector<int>result=obj.findMode(root);
     for(int i=0;i<result.size();i++)cout<<result[i];
 }
-
+//二叉搜索树中的众数
 void SearchTree_format(){
     int N;
     cin>>N;
@@ -113,7 +113,7 @@ void SearchTree_format(){
     vector<int>result=obj.SearchTree_AIter(root);
     for(int i=0;i<result.size();i++)cout<<result[i];
 }
-
+//二叉树的最近公共祖先
 void RecentPublicAncestors_Format(){
     int N;
     cin>>N;
@@ -122,8 +122,8 @@ void RecentPublicAncestors_Format(){
     for(int i=0;i<N;i++)cin>>postorder[i];
     ConstructBinaryTree cat;
     RecentPublicAncestors obj;
-    TreeNode*root,*p,*q;
-    root=cat.Construct_B(ionder,0,N,postorder,0,N);
-    cout<<obj.lowsetCommonAncestor(root,obj.Search_RootA(root,6),obj.Search_RootA(root,7))->val;
-    
+    //TreeNode*root,*p,*q;
+    /*root=cat.Construct_B(ionder,0,N,postorder,0,N);
+    cout<<obj.lowsetCommonAncestor(root,obj.Search_RootA(root,6),obj.Search_RootA(root,7))->val;*/
+    cout<<obj.lowsetCommonAncestorS(cat.Construct_B(ionder,0,N,postorder,0,N),5,6)->val;
 }
