@@ -10,8 +10,9 @@
 
 
 using namespace std;
-
-struct TreeNode{
+struct TreeNode
+{
+    /* data */
     int val;
     TreeNode*left;
     TreeNode*right;
@@ -19,10 +20,11 @@ struct TreeNode{
     TreeNode(int x):val(x),left(NULL),right(NULL),next(NULL){};
 };
 
+
 class BiaryTree{
 public:
     //输入函数，动态数组
-    void CreatTree(int *trees,int sub,int len,TreeNode* &root);
+    void CreatTree(int *trees,int sub,int len,TreeNode*&root);
     //输入函数，容器vector,当前位置，数组长度，根节点
     void CreatTree(vector<int>trees,int sub,int len,TreeNode* &root);
     
