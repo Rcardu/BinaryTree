@@ -3,6 +3,7 @@
 #include"BiaryTrees\\Using2.cpp"
 #include"BiaryTrees\\Using3.cpp"
 #include"BiaryTrees\\Using4.cpp"
+#include"BiaryTrees\\Using5.cpp"
 
 //void IputFormat();
 //void LayerOrderTraversalFormat();
@@ -25,7 +26,10 @@
 //void SearchTree_minValFormat();
 //void MapSearchTree_Format();
 //void SearchTree_format();
-void RecentPublicAncestors_Format();
+//void RecentPublicAncestors_Format();
+//void CommonAncestorSearchTreeFormat();
+//void CommonAncestorSearchTree_InsertFormat();
+void CommonAncestorSearchTree_DelteFormat();
 
 int main(){
        //IputFormat();
@@ -49,7 +53,10 @@ int main(){
        //SearchTree_minValFormat();
        //MapSearchTree_Format();
        //SearchTree_format();
-       RecentPublicAncestors_Format();
+       //RecentPublicAncestors_Format();
+       //CommonAncestorSearchTreeFormat();
+       //CommonAncestorSearchTree_InsertFormat();
+       CommonAncestorSearchTree_DelteFormat();
 
 
     while(getchar()!='\n')
